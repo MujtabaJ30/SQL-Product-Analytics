@@ -1,0 +1,12 @@
+# Database file
+*.db
+
+# Source data CSVs (download from Kaggle — too large for GitHub)
+data/
+
+# Python scripts (utilities — not portfolio content)
+*.py
+!run_all_queries.py
+
+# Query output results
+output/
