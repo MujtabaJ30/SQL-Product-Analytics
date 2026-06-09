@@ -17,7 +17,9 @@
 
 | Payments Tab | More Views |
 |---|---|
-| ![Payments Tab](dashboard%20pics/Screenshot%202026-06-09%20060603.png) | ![Dashboard](dashboard%20pics/Screenshot%202026-06-09%20060618.png) |
+| ![Payments Tab](dashboard%20pics/Screenshot%202026-06-09%20060603.png) | ![Dashboard](dashboard%20pics/Screenshot%202026-06-09%20060536.png) |
+
+<p align="center"><img src="dashboard%20pics/Screenshot%202026-06-09%20060618.png" width="49%" /></p>
 
 *(Screenshots above serve as a fallback if the live app is asleep or unavailable)*
 
