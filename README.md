@@ -11,11 +11,11 @@
 |---|---|
 | ![Dashboard KPI](dashboard%20pics/Screenshot%202026-06-09%20060515.png) | ![Revenue Tab](dashboard%20pics/Screenshot%202026-06-09%20060528.png) |
 
-| Customers Tab | Delivery Tab |
+| Delivery Tab | Payments Tab |
 |---|---|
 | ![Customers Tab](dashboard%20pics/Screenshot%202026-06-09%20060545.png) | ![Delivery Tab](dashboard%20pics/Screenshot%202026-06-09%20060554.png) |
 
-| Payments Tab | More Views |
+| Payments Tab | Customer Tab |
 |---|---|
 | ![Payments Tab](dashboard%20pics/Screenshot%202026-06-09%20060603.png) | ![Dashboard](dashboard%20pics/Screenshot%202026-06-09%20060536.png) |
 
