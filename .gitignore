@@ -1,5 +1,6 @@
-# Database file (too large for GitHub — download from Kaggle)
+# Database file — compressed version included; uncompressed is rebuilt at runtime
 *.db
+!olist.db.gz
 
 # Source data CSVs (download from Kaggle — too large for GitHub)
 data/

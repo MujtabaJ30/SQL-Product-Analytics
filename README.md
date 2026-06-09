@@ -167,26 +167,50 @@ The Olist dataset is publicly available on Kaggle and contains **100K orders** f
 
 ## How to Run
 
-### Option A: Interactive Dashboard (Streamlit)
+### Interactive Dashboard (Streamlit)
 ```bash
-streamlit run dashboard.py
-```
-Opens a browser-based interactive dashboard with 4 tabs (Revenue, Customers, Delivery, Payments), KPI cards, and filterable charts.
+# 1. Create virtual environment
+python -m venv .venv
+.venv\Scripts\activate      # Windows
+# source .venv/bin/activate  # Mac/Linux
 
-### Option B: DB Browser for SQLite
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run the dashboard
+streamlit run app.py
+```
+Opens at `http://localhost:8501` — 4 tabs (Revenue, Customers, Delivery, Payments) with live KPI cards and filterable Plotly charts. The database auto-decompresses from `olist.db.gz` on first run.
+
+### DB Browser for SQLite
 1. Download [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
-2. Open `data/olist.db` (or create new database and import CSVs from `data/`)
+2. Open `olist.db` (auto-created on first dashboard run, or download CSVs from Kaggle)
 3. Open any `.sql` file from `queries/` and execute
 
-### Option C: Command Line (SQLite3)
+### Command Line (SQLite3)
 ```bash
-sqlite3 data/olist.db < queries/01_schema_exploration.sql
+sqlite3 olist.db < queries/01_schema_exploration.sql
 ```
 
-### Option D: Batch Runner
+### Batch Runner (all 10 queries at once)
 ```bash
 python run_all_queries.py
 ```
+
+---
+
+## Deploy to Streamlit Cloud
+
+1. Fork/push this repo to GitHub (the compressed `olist.db.gz` is already included)
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Click **New app** → select this repo → set **Main file path** to `app.py`
+4. Click **Deploy** — the app auto-decompresses the database on first run
+
+No API keys, no external DB, no paid services. Works on Streamlit Cloud's free tier.
+
+### Live Dashboard
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://olist-analytics.streamlit.app)
+*(Replace URL with your deployed app link after Streamlit Cloud deployment)*
 
 ---
 

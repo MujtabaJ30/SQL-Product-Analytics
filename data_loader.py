@@ -1,12 +1,29 @@
+import gzip
+import os
+import shutil
 import sqlite3
+
 import pandas as pd
 import streamlit as st
 
-DB_PATH = r'C:\Users\Mujtaba Jafri\Downloads\Product resume Project\Olist SQL\olist.db'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, 'olist.db')
+GZ_PATH = os.path.join(BASE_DIR, 'olist.db.gz')
+
+
+def _ensure_db():
+    """Decompress olist.db.gz if olist.db does not exist (for deployment)."""
+    if os.path.exists(DB_PATH):
+        return
+    if os.path.exists(GZ_PATH):
+        with gzip.open(GZ_PATH, 'rb') as f_in:
+            with open(DB_PATH, 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
 
 
 @st.cache_resource
 def get_connection():
+    _ensure_db()
     return sqlite3.connect(DB_PATH)
 
 
