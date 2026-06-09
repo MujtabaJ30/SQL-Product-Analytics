@@ -209,8 +209,7 @@ python run_all_queries.py
 No API keys, no external DB, no paid services. Works on Streamlit Cloud's free tier.
 
 ### Live Dashboard
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://olist-analytics.streamlit.app)
-*(Replace URL with your deployed app link after Streamlit Cloud deployment)*
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sql-appuct-analytics-3uobdqo7wkjvr2ctgatihf.streamlit.app/)
 
 ---
 
