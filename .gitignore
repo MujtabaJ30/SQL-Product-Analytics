@@ -1,12 +1,20 @@
-# Database file
+# Database file (too large for GitHub — download from Kaggle)
 *.db
 
 # Source data CSVs (download from Kaggle — too large for GitHub)
 data/
 
-# Python scripts (utilities — not portfolio content)
-*.py
-!run_all_queries.py
+# Python virtual environment
+.venv/
 
-# Query output results
+# Python cache
+__pycache__/
+
+# Query output text files (generated locally)
 output/
+
+# Python scripts — explicitly include only the portfolio deliverables
+*.py
+!app.py
+!data_loader.py
+!run_all_queries.py

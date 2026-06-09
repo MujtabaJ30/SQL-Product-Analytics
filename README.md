@@ -167,22 +167,25 @@ The Olist dataset is publicly available on Kaggle and contains **100K orders** f
 
 ## How to Run
 
-### Option A: DB Browser for SQLite (Recommended)
+### Option A: Interactive Dashboard (Streamlit)
+```bash
+streamlit run dashboard.py
+```
+Opens a browser-based interactive dashboard with 4 tabs (Revenue, Customers, Delivery, Payments), KPI cards, and filterable charts.
+
+### Option B: DB Browser for SQLite
 1. Download [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
 2. Open `data/olist.db` (or create new database and import CSVs from `data/`)
 3. Open any `.sql` file from `queries/` and execute
 
-### Option B: Command Line (SQLite3)
+### Option C: Command Line (SQLite3)
 ```bash
 sqlite3 data/olist.db < queries/01_schema_exploration.sql
 ```
 
-### Option C: Python
-```python
-import sqlite3
-conn = sqlite3.connect('data/olist.db')
-cursor = conn.execute("SELECT * FROM olist_orders_dataset LIMIT 5")
-print(cursor.fetchall())
+### Option D: Batch Runner
+```bash
+python run_all_queries.py
 ```
 
 ---
