@@ -5,6 +5,22 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sql-appuct-analytics-3uobdqo7wkjvr2ctgatihf.streamlit.app/)
 *(Takes ~30 seconds to load on first click — the free server sleeps when idle)*
 
+### Dashboard Preview
+
+| KPI Overview | Revenue Tab |
+|---|---|
+| ![Dashboard KPI](dashboard%20pics/Screenshot%202026-06-09%20060515.png) | ![Revenue Tab](dashboard%20pics/Screenshot%202026-06-09%20060528.png) |
+
+| Customers Tab | Delivery Tab |
+|---|---|
+| ![Customers Tab](dashboard%20pics/Screenshot%202026-06-09%20060545.png) | ![Delivery Tab](dashboard%20pics/Screenshot%202026-06-09%20060554.png) |
+
+| Payments Tab | More Views |
+|---|---|
+| ![Payments Tab](dashboard%20pics/Screenshot%202026-06-09%20060603.png) | ![Dashboard](dashboard%20pics/Screenshot%202026-06-09%20060618.png) |
+
+*(Screenshots above serve as a fallback if the live app is asleep or unavailable)*
+
 ## Why Olist?
 
 The Olist dataset is publicly available on Kaggle and contains **100K orders** from 2016–2018 across multiple Brazilian marketplaces. It was chosen because:
