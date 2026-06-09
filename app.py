@@ -62,6 +62,12 @@ with st.sidebar:
     st.divider()
     st.caption("Built with Streamlit + SQLite")
     st.caption(f"Data: 2016-2018 - {kpis['total_orders'][0]:,} orders")
+    st.link_button(
+        ":material/code: View on GitHub",
+        "https://github.com/MujtabaJ30/SQL-Product-Analytics",
+        use_container_width=True,
+        type="tertiary"
+    )
 
 # ─── Filter data ─────────────────────────────────────────────
 rev_filtered = revenue_df.copy()
@@ -82,26 +88,36 @@ if selected_state and selected_state != 'All':
 # ─── KPI Row ─────────────────────────────────────────────────
 k = kpis.iloc[0]
 rev = k['total_revenue']
-orders = k['total_orders']
-customers = k['total_customers']
+orders_val = k['total_orders']
+customers = int(k['total_customers'])
 score = k['avg_review_score']
 delivery_rate = k['delivered_orders'] / k['total_orders'] * 100
 aov = k['avg_order_value']
 delivery_days = k['avg_delivery_days']
 
+# Compute YoY growth from monthly revenue data (first 12mo vs last 12mo)
+half = len(revenue_df) // 2
+first_12 = revenue_df.iloc[:half]
+last_12 = revenue_df.iloc[half:]
+rev_yoy = (last_12['revenue'].sum() / first_12['revenue'].sum() - 1) * 100
+ord_yoy = (last_12['order_count'].sum() / first_12['order_count'].sum() - 1) * 100
+
+# Unique customers count and repeat rate
+repeat_rate = round((1 - customers / orders_val) * 100)
+
 col1, col2, col3, col4, col5, col6 = st.columns(6)
 with col1:
-    st.metric("Total Revenue", f"${rev:,.0f}", "+18% YoY")
+    st.metric("Total Revenue", f"${rev:,.0f}", f"{rev_yoy:+.1f}% YoY")
 with col2:
-    st.metric("Total Orders", f"{orders:,}", "+12% YoY")
+    st.metric("Total Orders", f"{orders_val:,}", f"{ord_yoy:+.1f}% YoY")
 with col3:
-    st.metric("Customers", f"{customers:,}", "96K unique")
+    st.metric("Customers", f"{customers:,}", f"~{repeat_rate}% repeat")
 with col4:
-    st.metric("Avg Review", f"{score}/5", "4.09 avg")
+    st.metric("Avg Review", f"{score}/5", "-0.5 on lates")
 with col5:
-    st.metric("Delivery Rate", f"{delivery_rate:.1f}%", f"{k['delivered_orders']:,} delivered")
+    st.metric("Delivery Rate", f"{delivery_rate:.1f}%", f"{int(k['delivered_orders']):,} delivered")
 with col6:
-    st.metric("Avg Order", f"${aov:,.0f}", f"{delivery_days} days delivery")
+    st.metric("Avg Order", f"${aov:,.0f}", f"{delivery_days}d delivery")
 
 st.divider()
 
