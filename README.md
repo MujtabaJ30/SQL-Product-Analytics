@@ -1,4 +1,7 @@
-# Olist E-Commerce SQL Product Analytics ([![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sql-appuct-analytics-3uobdqo7wkjvr2ctgatihf.streamlit.app/)*(Takes ~30 seconds to load on first click — the free server sleeps when idle)*)
+# Olist E-Commerce SQL Product Analytics
+
+### ([![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sql-appuct-analytics-3uobdqo7wkjvr2ctgatihf.streamlit.app/)
+*(Takes ~30 seconds to load on first click — the free server sleeps when idle)*)
 
 **10 SQL queries analyzing 100K Brazilian e-commerce orders — from funnel conversion to customer segmentation.**
 
