@@ -146,21 +146,21 @@ The Olist dataset is publicly available on Kaggle and contains **100K orders** f
 
 ### 7. Delivery Performance
 - **Business Question:** How reliable is delivery estimation? Which categories have worst delays?
-- **Key Finding:** 8.1% of deliveries arrive late. Furniture/home categories have highest late rates (13-17%).
+- **Key Finding:** 8.1% of delivered orders with recorded delivery and estimate dates arrived late.
 - **Techniques:** `JULIANDAY` for date difference, `CASE` for late flag, aggregation by category
 
 ![Late Delivery by Category](visuals/07_late_delivery_by_category.png)
 
 ### 8. Review Score vs Delivery Time
-- **Business Question:** Does late delivery cause lower review scores? How much impact?
-- **Key Finding:** On-time deliveries average 4.29 stars. Late deliveries drop to 2.57 stars — a **1.72 point penalty**. This is a massive impact on customer satisfaction.
+- **Business Question:** How do review scores compare for late and on-time deliveries?
+- **Key Finding:** Reviews for on-time deliveries average 4.29 stars, compared with 2.57 for late deliveries: a **1.72-point difference**. This association does not establish that delays caused the difference.
 - **Techniques:** `JULIANDAY`, `CASE` for delay severity buckets, aggregation
 
 ![Review Score vs Delivery](visuals/02_review_vs_delivery.png)
 
 ### 9. Customer Segmentation (RFM)
 - **Business Question:** Which customers are high-value, at-risk, or lost? Where should we invest retention?
-- **Key Finding:** High-value customers (25% of base) drive 48% of revenue. At-risk segment (25%) represents ~$1.5M in recoverable value.
+- **Key Finding:** The high-value segment (25% of customers) accounts for 48% of recorded revenue. The segment labelled at-risk represents 25% of customers; its historical spending is not an estimate of recoverable revenue.
 - **Techniques:** `CTEs`, `NTILE(4)` window function, `CASE` for segment labels, multi-stage transformation
 
 ![RFM Segmentation](visuals/03_rfm_segmentation.png)
@@ -174,13 +174,13 @@ The Olist dataset is publicly available on Kaggle and contains **100K orders** f
 
 ## Top 3 Product Recommendations
 
-### 1. Fix Delivery Estimation for High-Late Categories
-**Insight:** Furniture/home categories have 13-17% late delivery rates. Review scores drop by **1.72 points** (4.29 → 2.57) when deliveries are late.
-**Recommendation:** Adjust estimated delivery dates by category — more conservative for furniture, tighter for health/beauty. This alone could improve avg review score by 0.3-0.5 points.
+### 1. Investigate Delivery Estimates
+**Insight:** Reviews associated with late deliveries average **1.72 points lower** than those associated with on-time deliveries (2.57 vs 4.29). This comparison does not establish causation.
+**Recommendation:** Investigate where delivery estimates are least reliable and test whether improving them changes customer experience. This dataset does not quantify the effect of such a change.
 
 ### 2. Focus Retention on At-Risk High-Value Customers
-**Insight:** 25% of customers are "at-risk" (declining engagement) and represent ~$1.5M in recoverable annual value.
-**Recommendation:** Launch a reactivation campaign targeting at-risk customers who previously spent >$200 with personalized offers and delivery guarantees.
+**Insight:** 25% of customers fall in the segment labelled "at-risk" using a combined recency, frequency and monetary score. This descriptive label does not measure declining engagement or predict churn.
+**Recommendation:** Investigate the segment further and test a reactivation campaign before estimating recoverable revenue.
 
 ### 3. Prioritize Checkout for Credit Card + Installment UX
 **Insight:** 74% of payments are credit card, and 25%+ use 4+ installments. The current checkout likely treats these as equal.
@@ -248,7 +248,7 @@ No API keys, no external DB, no paid services. Works on Streamlit Cloud's free t
 | Avg Order Value | ~$120 |
 | Top State | São Paulo (SP) — 40%+ |
 | Top Payment | Credit Card — 74% |
-| Late Delivery Penalty | 1.72 star drop (4.29 → 2.57) |
+| Late vs On-Time Reviews | 1.72-point difference (2.57 vs 4.29) |
 | High-Value Customers | 25% drive 48% of revenue |
 
 ---
